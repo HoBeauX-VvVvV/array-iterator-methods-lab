@@ -90,8 +90,11 @@ let inventorNames = []
 // Enter your solution code here:
 
 inventorNames = inventors.map((inventor) => {
-    return `first: ${inventor.first}, last: ${inventor.last}`
-})
+    return {
+      first: inventor.first,
+      last: inventor.last
+    };
+});
 
 // Check your return value:
 console.log('Exercise 2 My Result: ', inventorNames)
@@ -228,11 +231,12 @@ console.log('Exercise 5 Correct Result: ',
 // - Store the result (true or false) in the variable 'isAdultPresent'. 
 
 let isAdultPresent = null
-
+let currentYear = new Date().getFullYear();
 // Enter your solution code here:
 
 isAdultPresent = devs.some((dev) => {
-           return dev.year < 2006;
+    let age = currentYear - dev.year;
+       return age >= 18;
 });
 
 // Check your return value:
@@ -251,7 +255,7 @@ let isEveryone19OrOlder = null
 // Enter your solution code here:
 
 isEveryone19OrOlder = devs.every((dev) => {
-  return dev.year < 2005;
+  return currentYear - dev.year >= 19;
 });
 
 // Check your return value:
